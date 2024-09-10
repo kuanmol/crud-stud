@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: springboot-service
+spec:
+  selector:
+    app: springboot  # This should match the label in your Spring Boot deployment
+  ports:
+    - protocol: TCP
+      port: 80        # Port on which the service will be exposed
+      targetPort: 8080 # Port on which your Spring Boot application is running in the container
+  type: LoadBalancer # This creates an external LoadBalancer; you can use NodePort for local testing
