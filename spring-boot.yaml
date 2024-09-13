@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: springboot-app
-        image: anmolk992/student-exp  # Use your Docker Hub image
+        image: anmolk992/student-exp
         ports:
         - containerPort: 8080
         env:
