@@ -1,5 +1,0 @@
-GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
-studentcrud,com.example.studentcrud.Model,Student,28,3,0,0,12,1,8,1,8,1
-studentcrud,com.example.studentcrud,StudentcrudApplication,5,3,0,0,2,1,1,1,1,1
-studentcrud,com.example.studentcrud.service,StudentService,20,3,0,0,5,1,4,1,4,1
-studentcrud,com.example.studentcrud.controller,StudentController,60,3,0,0,13,1,7,1,7,1
