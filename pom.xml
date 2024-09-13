@@ -13,22 +13,10 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>studentcrud</name>
 	<description>Demo project for Spring Boot</description>
-	<url/>
-	<licenses>
-		<license/>
-	</licenses>
-	<developers>
-		<developer/>
-	</developers>
-	<scm>
-		<connection/>
-		<developerConnection/>
-		<tag/>
-		<url/>
-	</scm>
+
 	<properties>
 		<java.version>11</java.version>
-		<sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin> <!-- Enable JaCoCo plugin for code coverage -->
+		<sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
 	</properties>
 
 	<dependencies>
@@ -74,6 +62,7 @@
 		</dependency>
 
 		<!-- SonarQube Plugin Dependency -->
+		<!-- Remove if using SonarQube plugin in build section -->
 		<dependency>
 			<groupId>org.sonarsource.scanner.maven</groupId>
 			<artifactId>sonar-maven-plugin</artifactId>
@@ -81,6 +70,7 @@
 		</dependency>
 
 		<!-- JaCoCo for Code Coverage -->
+		<!-- Remove if not using JaCoCo -->
 		<dependency>
 			<groupId>org.jacoco</groupId>
 			<artifactId>jacoco-maven-plugin</artifactId>
@@ -96,6 +86,16 @@
 
 	<build>
 		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.1</version>
+				<configuration>
+					<source>11</source>
+					<target>11</target>
+				</configuration>
+			</plugin>
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-checkstyle-plugin</artifactId>
@@ -123,7 +123,7 @@
 			<plugin>
 				<groupId>org.sonarsource.scanner.maven</groupId>
 				<artifactId>sonar-maven-plugin</artifactId>
-				<version>3.9.1.2184</version>
+				<version>3.10.0.2594</version>
 			</plugin>
 
 			<!-- JaCoCo Plugin for Code Coverage -->
