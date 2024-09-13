@@ -21,9 +21,9 @@ spec:
         - containerPort: 8080
         env:
         - name: SPRING_DATASOURCE_URL
-          value: jdbc:mysql://mysql-service:3306/studentdb
+          value: jdbc:mysql://database-1.clewu8skqn5u.us-west-2.rds.amazonaws.com/studentdb
         - name: SPRING_DATASOURCE_USERNAME
-          value: root
+          value: admin
         - name: SPRING_DATASOURCE_PASSWORD
           value: anmolkumar
         - name: SPRING_JPA_HIBERNATE_DDL_AUTO
