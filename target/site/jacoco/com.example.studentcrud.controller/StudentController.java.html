@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>StudentController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">studentcrud</a> &gt; <a href="index.source.html" class="el_package">com.example.studentcrud.controller</a> &gt; <span class="el_source">StudentController.java</span></div><h1>StudentController.java</h1><pre class="source lang-java linenums">package com.example.studentcrud.controller;
+
+import com.example.studentcrud.Model.Student;
+import com.example.studentcrud.service.StudentService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+
+@Controller
+@RequestMapping(&quot;/students&quot;)
+<span class="fc" id="L12">public class StudentController {</span>
+
+    @Autowired
+    private StudentService studentService;
+
+    @GetMapping
+    public String listStudents(Model model) {
+<span class="nc" id="L19">        model.addAttribute(&quot;students&quot;, studentService.findAll());</span>
+<span class="nc" id="L20">        return &quot;students/list&quot;;</span>
+    }
+
+    @GetMapping(&quot;/new&quot;)
+    public String createStudentForm(Model model) {
+<span class="nc" id="L25">        model.addAttribute(&quot;student&quot;, new Student());</span>
+<span class="nc" id="L26">        return &quot;students/new&quot;;</span>
+    }
+
+    @PostMapping
+    public String saveStudent(@ModelAttribute Student student) {
+<span class="nc" id="L31">        studentService.save(student);</span>
+<span class="nc" id="L32">        return &quot;redirect:/students&quot;;</span>
+    }
+
+    @GetMapping(&quot;/edit/{id}&quot;)
+    public String editStudentForm(@PathVariable Long id, Model model) {
+<span class="nc" id="L37">        model.addAttribute(&quot;student&quot;, studentService.findById(id).orElseThrow(() -&gt; new IllegalArgumentException(&quot;Invalid student Id:&quot; + id)));</span>
+<span class="nc" id="L38">        return &quot;students/edit&quot;;</span>
+    }
+
+    @PostMapping(&quot;/{id}&quot;)
+    public String updateStudent(@PathVariable Long id, @ModelAttribute Student student) {
+<span class="nc" id="L43">        student.setId(id);</span>
+<span class="nc" id="L44">        studentService.save(student);</span>
+<span class="nc" id="L45">        return &quot;redirect:/students&quot;;</span>
+    }
+
+    @GetMapping(&quot;/delete/{id}&quot;)
+    public String deleteStudent(@PathVariable Long id) {
+<span class="nc" id="L50">        studentService.deleteById(id);</span>
+<span class="nc" id="L51">        return &quot;redirect:/students&quot;;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
